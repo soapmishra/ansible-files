@@ -1,9 +1,25 @@
 ---
 - name: Update pacman packages
   hosts: archlinux
-  
+  become: true  # Pacman usually needs root
+
   tasks:
-    - name: Ensure all packages are upto date
-      community.general.pacman:
-        update_cache: true
-        upgrade: true
+    - name: Maintenance Block
+      block:
+        - name: Ensure all packages are up to date
+          community.general.pacman:
+            update_cache: true
+            upgrade: true
+          register: pacman_result
+
+      rescue:
+        - name: Log failure to a local file
+          delegate_to: localhost
+          lineinfile:
+            path: ~/ansible_updates.log
+            create: yes
+            line: "{{ ansible_date_time.iso8601 }} - FAILED to update {{ inventory_hostname }}. Error: {{ pacman_result.msg | default('Unknown error') }}"
+
+        - name: Fail the play
+          fail:
+            msg: "The update failed! Check ~/ansible_updates.log for details."

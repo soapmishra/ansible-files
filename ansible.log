@@ -1,0 +1,34 @@
+2026-01-30 20:44:35,029 p=100263 u=soap n=ansible INFO| PLAY [Update pacman packages] **************************************************************************************************************************************************************************************
+2026-01-30 20:44:35,037 p=100263 u=soap n=ansible INFO| TASK [Gathering Facts] *********************************************************************************************************************************************************************************************
+2026-01-30 20:44:38,303 p=100263 u=soap n=ansible WARNING| [WARNING]: Host 'odin.machines.mexpert.eu.org' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2026-01-30 20:44:38,303 p=100263 u=soap n=ansible INFO| ok: [odin.machines.mexpert.eu.org]
+2026-01-30 20:44:38,311 p=100263 u=soap n=ansible INFO| TASK [Ensure all packages are up to date] **************************************************************************************************************************************************************************
+2026-01-30 20:44:43,439 p=100263 u=soap n=ansible INFO| changed: [odin.machines.mexpert.eu.org]
+2026-01-30 20:44:43,440 p=100263 u=soap n=ansible INFO| PLAY RECAP *********************************************************************************************************************************************************************************************************
+2026-01-30 20:44:43,440 p=100263 u=soap n=ansible INFO| odin.machines.mexpert.eu.org : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2026-01-30 20:45:31,771 p=100760 u=soap n=ansible INFO| ansible-playbook [core 2.20.1]
+  config file = /home/soap/fun/ansible-files/ansible.cfg
+  configured module search path = ['/home/soap/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.14/site-packages/ansible
+  ansible collection location = /home/soap/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.14.2 (main, Jan  2 2026, 14:27:39) [GCC 15.2.1 20251112] (/usr/bin/python)
+  jinja version = 3.1.6
+  pyyaml version = 6.0.3 (with libyaml v0.2.5)
+2026-01-30 20:45:31,771 p=100760 u=soap n=ansible INFO| Using /home/soap/fun/ansible-files/ansible.cfg as config file
+2026-01-30 20:45:32,085 p=100760 u=soap n=ansible INFO| Skipping callback 'minimal', as we already have a stdout callback.
+2026-01-30 20:45:32,085 p=100760 u=soap n=ansible INFO| Skipping callback 'oneline', as we already have a stdout callback.
+2026-01-30 20:45:32,086 p=100760 u=soap n=ansible INFO| PLAYBOOK: upgrade_all_pacman.yaml **********************************************************************************************************************************************************************************
+2026-01-30 20:45:32,086 p=100760 u=soap n=ansible INFO| 1 plays in upgrade_all_pacman.yaml
+2026-01-30 20:45:32,088 p=100760 u=soap n=ansible INFO| PLAY [Update pacman packages] **************************************************************************************************************************************************************************************
+2026-01-30 20:45:32,097 p=100760 u=soap n=ansible INFO| TASK [Gathering Facts] *********************************************************************************************************************************************************************************************
+2026-01-30 20:45:32,097 p=100760 u=soap n=ansible INFO| task path: /home/soap/fun/ansible-files/upgrade_all_pacman.yaml:2
+2026-01-30 20:45:34,401 p=100760 u=soap n=ansible WARNING| [WARNING]: Host 'odin.machines.mexpert.eu.org' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2026-01-30 20:45:34,402 p=100760 u=soap n=ansible INFO| ok: [odin.machines.mexpert.eu.org]
+2026-01-30 20:45:34,411 p=100760 u=soap n=ansible INFO| TASK [Ensure all packages are up to date] **************************************************************************************************************************************************************************
+2026-01-30 20:45:34,411 p=100760 u=soap n=ansible INFO| task path: /home/soap/fun/ansible-files/upgrade_all_pacman.yaml:9
+2026-01-30 20:45:39,191 p=100760 u=soap n=ansible INFO| ok: [odin.machines.mexpert.eu.org] => {"cache_updated": false, "changed": false, "msg": "Updated package db\nNothing to upgrade", "stdout": ":: Synchronizing package databases...\n core downloading...\n extra downloading...\n multilib downloading...\n chaotic-aur downloading...\n lizardbyte downloading...\n", "stdout_lines": [":: Synchronizing package databases...", " core downloading...", " extra downloading...", " multilib downloading...", " chaotic-aur downloading...", " lizardbyte downloading..."]}
+2026-01-30 20:45:39,193 p=100760 u=soap n=ansible INFO| PLAY RECAP *********************************************************************************************************************************************************************************************************
+2026-01-30 20:45:39,193 p=100760 u=soap n=ansible INFO| odin.machines.mexpert.eu.org : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
