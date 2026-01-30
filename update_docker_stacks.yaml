@@ -1,0 +1,34 @@
+- name: High-speed Docker Compose Update
+  hosts: linux
+  vars:
+    base_dir: "/root/docker/"
+
+  tasks:
+    - name: Quick scan for compose files
+      ansible.builtin.find:
+        paths: "{{ base_dir }}"
+        recurse: yes
+        depth: 2
+        patterns: "docker-compose.yaml"
+      register: compose_files
+
+    - name: Updating Containers
+      community.docker.docker_compose_v2:
+        project_src: "{{ item.path | dirname }}"
+        state: present
+        pull: always
+      loop: "{{ compose_files.files }}"
+      loop_control:
+        # Displays "Updating: [jellyfin] (1/11)"
+        label: "[{{ item.path | dirname | basename }}] ({{ index + 1 }}/{{ compose_files.matched }})"
+        index_var: index
+      register: update_results
+
+    - name: Summary of changes
+      ansible.builtin.debug:
+        msg: "Service {{ item.item.path | dirname | basename }} was updated!"
+      loop: "{{ update_results.results }}"
+      when: item.changed
+      loop_control:
+        label: "{{ item.item.path | dirname | basename }}"
+

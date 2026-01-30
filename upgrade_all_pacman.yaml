@@ -1,0 +1,9 @@
+---
+- name: Update pacman packages
+  hosts: archlinux
+  
+  tasks:
+    - name: Ensure all packages are upto date
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
