@@ -10,7 +10,7 @@
         paths: "{{ base_dir }}"
         recurse: yes
         depth: 2
-        patterns: "docker-compose.yaml"
+        patterns: "docker-compose.yml"
       register: compose_files
 
     - name: Updating Containers
@@ -32,4 +32,3 @@
       when: item.changed
       loop_control:
         label: "{{ item.item.path | dirname | basename }}"
-
