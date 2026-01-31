@@ -2,7 +2,7 @@
 - name: High-speed Docker Compose Update
   hosts: linux
   vars:
-    base_dir: "/root/docker/"
+    base_dir: "/etc/dockerstacks/"
 
   tasks:
     - name: Quick scan for compose files
